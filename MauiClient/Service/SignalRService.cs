@@ -20,6 +20,7 @@ namespace MauiClient.Service
                 .WithAutomaticReconnect()
                 .Build();
 
+           
             _hubConnection.On<bool>("LichtGeaendert", async (isLicht) =>
             {
                 // Weiterleiten an UI
@@ -49,13 +50,17 @@ namespace MauiClient.Service
 
             });
 
+           
+
             try
             {
                 await _hubConnection.StartAsync();
+               
 
-                if(_hubConnection.State == HubConnectionState.Connected)
+                if (_hubConnection.State == HubConnectionState.Connected)
                 {
                     await _hubConnection.SendAsync("RegisterClient", $"{DeviceInfo.Name}"); // Optional: Client-Registrierung
+                   
                 }
                 else
                 {
@@ -76,6 +81,11 @@ namespace MauiClient.Service
             {
                 await _hubConnection.SendAsync("UpdateLichtState", status);
             }
+        }
+
+        public async Task SendMessage(string targetConnectionId, string message)
+        {
+            await _hubConnection.InvokeAsync("SendToClient", targetConnectionId, message);
         }
     }
 }

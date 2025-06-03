@@ -40,6 +40,7 @@ app.UseCors();
 app.UseEndpoints(endpoints =>
 {
     endpoints.MapHub<NotificationHub>("/notificationHub");
+    endpoints.MapHub<ChatHub>("/chathub");
     endpoints.MapControllers();
 });
 
