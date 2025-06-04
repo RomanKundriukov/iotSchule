@@ -25,9 +25,14 @@ namespace MqttBrokerWebApi.SignalRHub
             var connectionId = Context.ConnectionId;
 
             _connectedClients[connectionId] = geraetName;
-            await Clients.All.SendAsync("ClientListUpdated", _connectedClients.Values.ToList());
+            await Clients.All.SendAsync("ClientListUpdated", _connectedClients);
 
             //return Task.CompletedTask;
+        }
+
+        public async Task SendePushText(string nachricht)
+        {
+            await Clients.All.SendAsync("ShowNotification", nachricht);
         }
 
         public override async Task OnDisconnectedAsync(Exception? exception)
@@ -35,7 +40,7 @@ namespace MqttBrokerWebApi.SignalRHub
             if (_connectedClients.ContainsKey(Context.ConnectionId))
             {
                 _connectedClients.Remove(Context.ConnectionId);
-                await Clients.All.SendAsync("ClientListUpdated", _connectedClients.Values.ToList());
+                await Clients.All.SendAsync("ClientListUpdated", _connectedClients);
             }
 
             await base.OnDisconnectedAsync(exception);

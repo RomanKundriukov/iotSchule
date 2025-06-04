@@ -1,27 +1,23 @@
 ﻿using Microsoft.AspNetCore.SignalR.Client;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Maui.Devices;
+using Plugin.LocalNotification;
 
 namespace MauiClient.Service
 {
     public class SignalRService
     {
-        private HubConnection? _hubConnection;
-        public event Action<bool> LichtEmpfangen;
+        private HubConnection _hubConnection;
+        //public event Action<bool> LichtEmpfangen;
 
         public async Task StartAsync()
         {
+            //https://aleksssandra-001-site1.anytempurl.com
             _hubConnection = new HubConnectionBuilder()
-                .WithUrl("https://aleksssandra-001-site1.anytempurl.com/notificationHub") // oder lokale IP im LAN
+                .WithUrl("https://localhost:44399/notificationHub") // oder lokale IP im LAN
                 .WithAutomaticReconnect()
                 .Build();
 
            
-            _hubConnection.On<bool>("LichtGeaendert", async (isLicht) =>
+            _hubConnection.On<bool>("LichtGeaendert", (isLicht) =>
             {
                 // Weiterleiten an UI
                 //LichtEmpfangen?.Invoke(isLicht);
@@ -50,7 +46,52 @@ namespace MauiClient.Service
 
             });
 
-           
+            _hubConnection.On<string>("ShowNotification", (message) =>
+            {
+                try
+                {
+                    
+                    var request = new NotificationRequest
+                    {
+                        NotificationId = 101,
+                        Title = "📢 Hinweis",
+                        Description = message,
+                        ReturningData = "Dummy", // optional
+                        Schedule = new NotificationRequestSchedule
+                        {
+                            NotifyTime = DateTime.Now.AddSeconds(10)
+                        }
+                    };
+
+                    MainThread.BeginInvokeOnMainThread(() =>
+                    {
+                        LocalNotificationCenter.Current.Show(request);
+                    });
+                        // MainThread.BeginInvokeOnMainThread(() =>
+                        // {
+                        //     var request = new NotificationRequest
+                        //     {
+                        //         Title = "WoW",
+                        //         Description = message,
+                        //         ReturningData = "",
+                        //         Schedule = new NotificationRequestSchedule()
+                        //         {
+                        //             NotifyTime  = DateTime.Now.AddSeconds(5),
+                        //         }
+                        //         //NotificationId = 101,
+                        //     };
+                        //     LocalNotificationCenter.Current.Show(request);
+                        // });
+                    
+                    
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                    throw;
+                }
+                
+            });
 
             try
             {
@@ -59,8 +100,7 @@ namespace MauiClient.Service
 
                 if (_hubConnection.State == HubConnectionState.Connected)
                 {
-                    await _hubConnection.SendAsync("RegisterClient", $"{DeviceInfo.Name}"); // Optional: Client-Registrierung
-                   
+                    await _hubConnection.SendAsync("RegisterClient", $"{DeviceInfo.Name}");
                 }
                 else
                 {
@@ -70,7 +110,7 @@ namespace MauiClient.Service
             catch (Exception ex)
             {
 
-                throw;
+                Console.WriteLine(ex.Message);
             }
             
         }

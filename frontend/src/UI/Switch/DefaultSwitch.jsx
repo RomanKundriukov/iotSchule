@@ -18,6 +18,10 @@ export default function DefaultSwitch({item}) {
                 {
                     await connection.send("UpdateLichtState", newState);
                 }
+                if(item === 'nachricht')
+                {
+                    await connection.send("SendePushText", "Test text");
+                }
                 console.log("🔦 Licht gesendet:", newState);
             } catch (err) {
                 console.error("❌ Fehler beim Senden:", err);
