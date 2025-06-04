@@ -35,6 +35,16 @@ namespace MqttBrokerWebApi.SignalRHub
             await Clients.All.SendAsync("ShowNotification", nachricht);
         }
 
+        public async Task SendOffer(string offer)
+        {
+            await Clients.Others.SendAsync("ReceiveOffer", offer);
+        }
+
+        public async Task SendAnswer(string answer)
+        {
+            await Clients.Others.SendAsync("ReceiveAnswer", answer);
+        }
+
         public override async Task OnDisconnectedAsync(Exception? exception)
         {
             if (_connectedClients.ContainsKey(Context.ConnectionId))

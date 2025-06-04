@@ -2,6 +2,7 @@ import cl from './App.module.scss';
 import {useContext} from "react";
 import {SignalRContext} from '../src/hooks/SignalRContext.jsx';
 import DefaultSwitch from "./UI/Switch/DefaultSwitch.jsx";
+import VideoReceiver from "./VideoReceiver.jsx";
 
 
 export default function App() {
@@ -35,6 +36,9 @@ export default function App() {
             </div>
             <div className={cl.row}>
                 <DefaultSwitch item = 'nachricht'/>
+            </div>
+            <div className={cl.row}>
+                <VideoReceiver />
             </div>
         </div>
     );

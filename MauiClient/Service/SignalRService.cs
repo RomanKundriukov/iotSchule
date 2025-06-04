@@ -1,11 +1,18 @@
-﻿using Microsoft.AspNetCore.SignalR.Client;
+using Microsoft.AspNetCore.SignalR.Client;
 using Plugin.LocalNotification;
+using Microsoft.Maui.Devices;
 
 namespace MauiClient.Service
 {
     public class SignalRService
     {
         private HubConnection _hubConnection;
+        private readonly WebRTCService _webrtc;
+
+        public SignalRService(WebRTCService webrtc)
+        {
+            _webrtc = webrtc;
+        }
         //public event Action<bool> LichtEmpfangen;
 
         public async Task StartAsync()
@@ -93,6 +100,24 @@ namespace MauiClient.Service
                 
             });
 
+            _hubConnection.On<string>("ReceiveOffer", async (offer) =>
+            {
+                await _webrtc.SetRemoteDescriptionAsync(offer);
+                var answer = await _webrtc.CreateAnswerAsync();
+                await _hubConnection.SendAsync("SendAnswer", answer);
+            });
+
+            _hubConnection.On<string>("ReceiveAnswer", async (answer) =>
+            {
+                await _webrtc.SetRemoteDescriptionAsync(answer);
+            });
+
+            _webrtc.OnSignal += async signal =>
+            {
+                if(_hubConnection.State == HubConnectionState.Connected)
+                    await _hubConnection.SendAsync("SendOffer", signal);
+            };
+
             try
             {
                 await _hubConnection.StartAsync();
@@ -101,6 +126,7 @@ namespace MauiClient.Service
                 if (_hubConnection.State == HubConnectionState.Connected)
                 {
                     await _hubConnection.SendAsync("RegisterClient", $"{DeviceInfo.Name}");
+                    await _webrtc.StartConnectionAsync();
                 }
                 else
                 {

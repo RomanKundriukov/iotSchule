@@ -8,11 +8,13 @@ namespace MauiClient
 
     public static class MauiProgram
     {
-        private static readonly SignalRService _signalR = new();
+        private static readonly WebRTCService _webrtc = new();
+        private static readonly SignalRService _signalR = new(_webrtc);
         //private static readonly ChatService _chat = new();
 
         public static MauiApp CreateMauiApp()
         {
+            _webrtc.Initialize();
             Task.Run(() => _signalR.StartAsync());
             //Task.Run(() => _chat.StartAsync());
 

@@ -20,7 +20,8 @@
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-signalr": "^0.2.24",
-    "styled-components": "^6.1.18"
+    "styled-components": "^6.1.18",
+    "simple-peer": "^9.11.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.25.0",
