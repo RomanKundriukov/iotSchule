@@ -8,7 +8,6 @@ export default function App() {
 
     const {connected, clients } = useContext(SignalRContext);
 
-
     return (
         <div className={cl.container}>
             <div className={cl.row}>

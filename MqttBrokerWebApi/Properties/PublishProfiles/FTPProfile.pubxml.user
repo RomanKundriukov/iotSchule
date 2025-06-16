@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- https://go.microsoft.com/fwlink/?LinkID=208121. -->
+<Project>
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAdYx7MJYwa0+X/hZDFH/HAAAAAAACAAAAAAAQZgAAAAEAACAAAABiQI9Cur1mvTa0k82hsdH5XftQC9jSd7+cpk7yRDbJeAAAAAAOgAAAAAIAACAAAAA00lwny5fQLm1HrdJDDcDkR9eTNgUBRETLejrbPP6GCSAAAADjaM/MK2Iaic/O6PDHHGyXTDhOEACvKREiurP/LpqLC0AAAADI8NZSBd4aHKtqrP2FffyvV3+BY5fZ7y+oUz3t478msRyYFdkyXoUXWUk1ev1c5D51SbBb3S8Mly0nv4hLEp2s</EncryptedPassword>
+    <_PublishTargetUrl>ftp://site28858.siteasp.net/wwwroot</_PublishTargetUrl>
+    <History>True|2025-06-16T11:57:41.8567899Z||;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="appsettings.Development.json">
+      <publishTime>06/16/2025 09:38:32</publishTime>
+    </File>
+    <File Include="appsettings.json">
+      <publishTime>06/16/2025 09:38:32</publishTime>
+    </File>
+    <File Include="Microsoft.AspNetCore.Connections.Abstractions.dll">
+      <publishTime>04/29/2025 20:42:16</publishTime>
+    </File>
+    <File Include="Microsoft.AspNetCore.OpenApi.dll">
+      <publishTime>04/29/2025 20:44:52</publishTime>
+    </File>
+    <File Include="Microsoft.AspNetCore.SignalR.Client.Core.dll">
+      <publishTime>04/29/2025 20:44:14</publishTime>
+    </File>
+    <File Include="Microsoft.AspNetCore.SignalR.Common.dll">
+      <publishTime>04/29/2025 20:43:50</publishTime>
+    </File>
+    <File Include="Microsoft.AspNetCore.SignalR.Protocols.Json.dll">
+      <publishTime>04/29/2025 20:44:10</publishTime>
+    </File>
+    <File Include="Microsoft.Extensions.DependencyInjection.Abstractions.dll">
+      <publishTime>04/15/2025 20:02:08</publishTime>
+    </File>
+    <File Include="Microsoft.Extensions.DependencyInjection.dll">
+      <publishTime>04/15/2025 20:02:16</publishTime>
+    </File>
+    <File Include="Microsoft.Extensions.Features.dll">
+      <publishTime>04/29/2025 20:42:10</publishTime>
+    </File>
+    <File Include="Microsoft.Extensions.Logging.Abstractions.dll">
+      <publishTime>04/15/2025 20:02:26</publishTime>
+    </File>
+    <File Include="Microsoft.Extensions.Logging.dll">
+      <publishTime>04/15/2025 20:02:50</publishTime>
+    </File>
+    <File Include="Microsoft.Extensions.Options.dll">
+      <publishTime>04/15/2025 20:02:24</publishTime>
+    </File>
+    <File Include="Microsoft.Extensions.Primitives.dll">
+      <publishTime>04/15/2025 20:02:12</publishTime>
+    </File>
+    <File Include="Microsoft.OpenApi.dll">
+      <publishTime>08/06/2024 11:15:10</publishTime>
+    </File>
+    <File Include="MqttBrokerWebApi.deps.json">
+      <publishTime>06/16/2025 13:57:27</publishTime>
+    </File>
+    <File Include="MqttBrokerWebApi.dll">
+      <publishTime>06/16/2025 13:57:27</publishTime>
+    </File>
+    <File Include="MqttBrokerWebApi.exe">
+      <publishTime>06/16/2025 13:57:27</publishTime>
+    </File>
+    <File Include="MqttBrokerWebApi.pdb">
+      <publishTime>06/16/2025 13:57:26</publishTime>
+    </File>
+    <File Include="MqttBrokerWebApi.runtimeconfig.json">
+      <publishTime>06/16/2025 12:58:47</publishTime>
+    </File>
+    <File Include="MqttBrokerWebApi.staticwebassets.endpoints.json">
+      <publishTime>06/16/2025 11:19:25</publishTime>
+    </File>
+    <File Include="web.config">
+      <publishTime>06/16/2025 13:57:32</publishTime>
+    </File>
+  </ItemGroup>
+</Project>
