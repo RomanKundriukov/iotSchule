@@ -70,7 +70,3 @@ npm run dev
 
 - **Roman Kundriukov** – Idee, Umsetzung & Dokumentation  
 > 💻 GitHub: [@RomanKundriukov](https://github.com/RomanKundriukov)
-
-## 📜 Lizenz
-
-Dieses Projekt steht unter der [MIT-Lizenz](LICENSE).
