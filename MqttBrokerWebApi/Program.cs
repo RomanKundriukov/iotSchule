@@ -10,17 +10,17 @@ builder.Services.AddOpenApi();
 
 builder.Services.AddSignalR();
 
-//builder.Services.AddCors(options =>
-//{
-//    options.AddDefaultPolicy(policy =>
-//    {
-//        policy
-//            .AllowAnyHeader()
-//            .AllowAnyMethod()
-//            .SetIsOriginAllowed(_ => true) // ← oder nur localhost:3000 erlauben
-//            .AllowCredentials();
-//    });
-//});
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(policy =>
+    {
+        policy
+            .AllowAnyHeader()
+            .AllowAnyMethod()
+            .SetIsOriginAllowed(_ => true) // ← oder nur localhost:3000 erlauben
+            .AllowCredentials();
+    });
+});
 
 
 var app = builder.Build();
@@ -36,14 +36,14 @@ app.UseHttpsRedirection();
 //app.UseAuthorization();
 
 app.UseRouting();
-//app.UseCors();
-//app.UseEndpoints(endpoints =>
-//{
-//    endpoints.MapHub<NotificationHub>("/notificationHub");
-//    endpoints.MapControllers();
-//});
+app.UseCors();
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapHub<NotificationHub>("/notificationHub");
+    endpoints.MapControllers();
+});
 
-app.MapHub<NotificationHub>("/notificationHub");
+//app.MapHub<NotificationHub>("/notificationHub");
 
 app.MapControllers();
 

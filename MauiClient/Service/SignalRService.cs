@@ -9,7 +9,7 @@ namespace MauiClient.Service
         public async Task StartAsync()
         {
             _hubConnection = new HubConnectionBuilder()
-                .WithUrl("https://localhost:44399//notificationHub") 
+                .WithUrl("https://iot-schule.runasp.net/notificationHub") 
                 .WithAutomaticReconnect()
                 .Build();
 
