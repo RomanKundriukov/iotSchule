@@ -12,8 +12,8 @@ export const SignalRProvider = ({ children }) => {
 
     useEffect(() => {
         const connection = new HubConnectionBuilder()
-            .withUrl("https://localhost:44399/notificationHub")
-            //.withUrl("https://aleksssandra-001-site1.anytempurl.com/notificationHub")
+            //.withUrl("https://localhost:44399/notificationHub")
+            .withUrl("https://aleksssandra-001-site1.anytempurl.com/notificationHub")
             .withAutomaticReconnect()
             .build();
 
@@ -23,7 +23,6 @@ export const SignalRProvider = ({ children }) => {
             .start()
             .then(async () => {
                 setConnected(true);
-                //await connection.send("RegisterClient", "ReactClient");
 
                 connection.on("ClientListUpdated", (clientList) => {
                     setClients(clientList);

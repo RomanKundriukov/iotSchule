@@ -4,7 +4,7 @@ import Switch from '@mui/material/Switch';
 import { useSignalR } from "../../hooks/SignalRContext.jsx";
 import cl from './DefaultSwitch.module.scss'
 
-export default function DefaultSwitch({item}) {
+export default function DefaultSwitch() {
     const [checked, setChecked] = useState(false);
     const { connection, connected } = useSignalR();
 
@@ -14,15 +14,7 @@ export default function DefaultSwitch({item}) {
 
         if (connected && connection) {
             try {
-                if(item === 'licht')
-                {
-                    await connection.send("UpdateLichtState", newState);
-                }
-                if(item === 'nachricht')
-                {
-                    await connection.send("SendePushText", "Test text");
-                }
-                console.log("🔦 Licht gesendet:", newState);
+                await connection.send("UpdateLichtState", newState);
             } catch (err) {
                 console.error("❌ Fehler beim Senden:", err);
             }

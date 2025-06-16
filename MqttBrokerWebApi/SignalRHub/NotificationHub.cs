@@ -6,7 +6,6 @@ namespace MqttBrokerWebApi.SignalRHub
     public class NotificationHub : Hub
     {
         private static Dictionary<string, string> _connectedClients = new();
-        private HubConnection? _hubConnection;
 
         public override async Task OnConnectedAsync()
         {
@@ -16,7 +15,6 @@ namespace MqttBrokerWebApi.SignalRHub
 
         public async Task UpdateLichtState(bool isLicht)
         {
-            // Weiterverteilung des Status an alle Clients
             await Clients.All.SendAsync("LichtGeaendert", isLicht);
         }
 
@@ -27,12 +25,6 @@ namespace MqttBrokerWebApi.SignalRHub
             _connectedClients[connectionId] = geraetName;
             await Clients.All.SendAsync("ClientListUpdated", _connectedClients);
 
-            //return Task.CompletedTask;
-        }
-
-        public async Task SendePushText(string nachricht)
-        {
-            await Clients.All.SendAsync("ShowNotification", nachricht);
         }
 
         public override async Task OnDisconnectedAsync(Exception? exception)

@@ -1,26 +1,21 @@
 ﻿using Microsoft.AspNetCore.SignalR.Client;
-using Plugin.LocalNotification;
 
 namespace MauiClient.Service
 {
     public class SignalRService
     {
-        private HubConnection _hubConnection;
-        //public event Action<bool> LichtEmpfangen;
+        private HubConnection? _hubConnection;
 
         public async Task StartAsync()
         {
-            //https://aleksssandra-001-site1.anytempurl.com
             _hubConnection = new HubConnectionBuilder()
-                .WithUrl("https://localhost:44399/notificationHub") // oder lokale IP im LAN
+                .WithUrl("https://localhost:44399//notificationHub") 
                 .WithAutomaticReconnect()
                 .Build();
 
            
             _hubConnection.On<bool>("LichtGeaendert", (isLicht) =>
             {
-                // Weiterleiten an UI
-                //LichtEmpfangen?.Invoke(isLicht);
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
                     try
@@ -46,53 +41,6 @@ namespace MauiClient.Service
 
             });
 
-            _hubConnection.On<string>("ShowNotification", (message) =>
-            {
-                try
-                {
-                    
-                    var request = new NotificationRequest
-                    {
-                        NotificationId = 101,
-                        Title = "📢 Hinweis",
-                        Description = message,
-                        ReturningData = "Dummy", // optional
-                        Schedule = new NotificationRequestSchedule
-                        {
-                            NotifyTime = DateTime.Now.AddSeconds(10)
-                        }
-                    };
-
-                    MainThread.BeginInvokeOnMainThread(() =>
-                    {
-                        LocalNotificationCenter.Current.Show(request);
-                    });
-                        // MainThread.BeginInvokeOnMainThread(() =>
-                        // {
-                        //     var request = new NotificationRequest
-                        //     {
-                        //         Title = "WoW",
-                        //         Description = message,
-                        //         ReturningData = "",
-                        //         Schedule = new NotificationRequestSchedule()
-                        //         {
-                        //             NotifyTime  = DateTime.Now.AddSeconds(5),
-                        //         }
-                        //         //NotificationId = 101,
-                        //     };
-                        //     LocalNotificationCenter.Current.Show(request);
-                        // });
-                    
-                    
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e);
-                    throw;
-                }
-                
-            });
-
             try
             {
                 await _hubConnection.StartAsync();
@@ -115,17 +63,5 @@ namespace MauiClient.Service
             
         }
 
-        public async Task SendLichtAsync(bool status)
-        {
-            if (_hubConnection.State == HubConnectionState.Connected)
-            {
-                await _hubConnection.SendAsync("UpdateLichtState", status);
-            }
-        }
-
-        public async Task SendMessage(string targetConnectionId, string message)
-        {
-            await _hubConnection.InvokeAsync("SendToClient", targetConnectionId, message);
-        }
     }
 }

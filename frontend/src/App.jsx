@@ -31,10 +31,7 @@ export default function App() {
 
             </div>
             <div className={cl.row}>
-                <DefaultSwitch item = 'licht'/>
-            </div>
-            <div className={cl.row}>
-                <DefaultSwitch item = 'nachricht'/>
+                <DefaultSwitch/>
             </div>
         </div>
     );

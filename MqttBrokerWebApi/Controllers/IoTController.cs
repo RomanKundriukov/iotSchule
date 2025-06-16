@@ -13,7 +13,7 @@ namespace MqttBrokerWebApi.Controllers
             _hub = hub;
         }
 
-        [HttpPost("gps")]
+        [HttpPost("licht")]
         public async Task<IActionResult> ReceiveGps([FromBody] bool isLicht)
         {
             // SignalR optional zum Verteilen an Clients

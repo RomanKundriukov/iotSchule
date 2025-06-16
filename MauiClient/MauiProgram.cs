@@ -1,6 +1,5 @@
 ﻿using MauiClient.Service;
 using Microsoft.Extensions.Logging;
-using Plugin.LocalNotification;
 
 namespace MauiClient
 {
@@ -9,17 +8,14 @@ namespace MauiClient
     public static class MauiProgram
     {
         private static readonly SignalRService _signalR = new();
-        //private static readonly ChatService _chat = new();
 
         public static MauiApp CreateMauiApp()
         {
             Task.Run(() => _signalR.StartAsync());
-            //Task.Run(() => _chat.StartAsync());
 
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
-                .UseLocalNotification()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
