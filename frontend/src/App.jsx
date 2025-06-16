@@ -1,6 +1,6 @@
 import cl from './App.module.scss';
 import {useContext} from "react";
-import {SignalRContext} from '../src/hooks/SignalRContext.jsx';
+import {SignalRContext} from './hooks/SignalRContext.jsx';
 import DefaultSwitch from "./UI/Switch/DefaultSwitch.jsx";
 
 
@@ -18,8 +18,8 @@ export default function App() {
                     <div>
                         <h1>Verbundene Geräte:</h1>
                         <ul>
-                            {clients && clients.length > 0 ? (
-                                clients.map((client, index) => <li key={index}>{client}</li>)
+                            {clients && Object.keys(clients).length > 0 ? (
+                                Object.values(clients).map((client, index) => <li key={index}>{client}</li>)
                             ) : (
                                 <li>Keine Geräte verbunden</li>
                             )}

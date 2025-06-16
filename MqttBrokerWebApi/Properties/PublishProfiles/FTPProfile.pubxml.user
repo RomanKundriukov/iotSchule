@@ -5,7 +5,7 @@
     <TimeStampOfAssociatedLegacyPublishXmlFile />
     <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAdYx7MJYwa0+X/hZDFH/HAAAAAAACAAAAAAAQZgAAAAEAACAAAABiQI9Cur1mvTa0k82hsdH5XftQC9jSd7+cpk7yRDbJeAAAAAAOgAAAAAIAACAAAAA00lwny5fQLm1HrdJDDcDkR9eTNgUBRETLejrbPP6GCSAAAADjaM/MK2Iaic/O6PDHHGyXTDhOEACvKREiurP/LpqLC0AAAADI8NZSBd4aHKtqrP2FffyvV3+BY5fZ7y+oUz3t478msRyYFdkyXoUXWUk1ev1c5D51SbBb3S8Mly0nv4hLEp2s</EncryptedPassword>
     <_PublishTargetUrl>ftp://site28858.siteasp.net/wwwroot</_PublishTargetUrl>
-    <History>True|2025-06-16T11:57:41.8567899Z||;</History>
+    <History>True|2025-06-16T12:34:04.0413006Z||;False|2025-06-16T14:28:39.3630504+02:00||;False|2025-06-16T14:28:08.7921899+02:00||;False|2025-06-16T14:28:01.1193888+02:00||;False|2025-06-16T14:27:11.1023557+02:00||;False|2025-06-16T14:26:43.4544071+02:00||;False|2025-06-16T14:26:22.4965281+02:00||;False|2025-06-16T14:26:11.4971514+02:00||;False|2025-06-16T14:25:58.9811674+02:00||;False|2025-06-16T14:25:29.0018258+02:00||;True|2025-06-16T14:12:13.0445198+02:00||;False|2025-06-16T14:11:31.9976366+02:00||;True|2025-06-16T13:57:41.8567899+02:00||;</History>
     <LastFailureDetails />
   </PropertyGroup>
   <ItemGroup>
@@ -55,16 +55,16 @@
       <publishTime>08/06/2024 11:15:10</publishTime>
     </File>
     <File Include="MqttBrokerWebApi.deps.json">
-      <publishTime>06/16/2025 13:57:27</publishTime>
+      <publishTime>06/16/2025 14:33:44</publishTime>
     </File>
     <File Include="MqttBrokerWebApi.dll">
-      <publishTime>06/16/2025 13:57:27</publishTime>
+      <publishTime>06/16/2025 14:33:44</publishTime>
     </File>
     <File Include="MqttBrokerWebApi.exe">
-      <publishTime>06/16/2025 13:57:27</publishTime>
+      <publishTime>06/16/2025 14:33:44</publishTime>
     </File>
     <File Include="MqttBrokerWebApi.pdb">
-      <publishTime>06/16/2025 13:57:26</publishTime>
+      <publishTime>06/16/2025 14:33:44</publishTime>
     </File>
     <File Include="MqttBrokerWebApi.runtimeconfig.json">
       <publishTime>06/16/2025 12:58:47</publishTime>
@@ -73,7 +73,7 @@
       <publishTime>06/16/2025 11:19:25</publishTime>
     </File>
     <File Include="web.config">
-      <publishTime>06/16/2025 13:57:32</publishTime>
+      <publishTime>06/16/2025 14:33:54</publishTime>
     </File>
   </ItemGroup>
 </Project>

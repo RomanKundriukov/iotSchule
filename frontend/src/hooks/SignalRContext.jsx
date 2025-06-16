@@ -1,44 +1,53 @@
-import React, { createContext, useContext, useEffect, useRef, useState } from "react";
+import React, { createContext, useContext, useEffect, useState, useMemo } from "react";
 import { HubConnectionBuilder } from "@microsoft/signalr";
 
-// ✅ 1. Context erzeugen
+// 1. Context erzeugen
 export const SignalRContext = createContext(null);
 
-// ✅ 2. Provider-Component
+// 2. Provider-Component
 export const SignalRProvider = ({ children }) => {
-    const connectionRef = useRef(null);
+    const [connection, setConnection] = useState(null);
     const [connected, setConnected] = useState(false);
     const [clients, setClients] = useState([]);
 
     useEffect(() => {
-        const connection = new HubConnectionBuilder()
+        const conn = new HubConnectionBuilder()
             .withUrl("https://iot-schule.runasp.net/notificationHub")
             .withAutomaticReconnect()
             .build();
 
-        connectionRef.current = connection;
+        conn.on("ClientListUpdated", (clientList) => {
+            setClients(clientList);
+        });
 
-        connection
-            .start()
-            .then(async () => {
+        conn.start()
+            .then(() => {
+                setConnection(conn);
                 setConnected(true);
-
-                connection.on("ClientListUpdated", (clientList) => {
-                    setClients(clientList);
-                });
+                console.log("SignalR verbunden.");
             })
-            .catch(() => setConnected(false));
+            .catch((err) => {
+                console.error("Verbindung fehlgeschlagen:", err);
+                setConnected(false);
+            });
 
-
-        return () => connection.stop();
+        return () => {
+            conn.stop().then(() => console.log("SignalR getrennt."));
+        };
     }, []);
 
+    const contextValue = useMemo(() => ({
+        connection,
+        connected,
+        clients
+    }), [connection, connected, clients]);
+
     return (
-        <SignalRContext.Provider value={{ connection: connectionRef.current, connected, clients }}>
+        <SignalRContext.Provider value={contextValue}>
             {children}
         </SignalRContext.Provider>
     );
 };
 
-// ✅ 3. Custom Hook zur Verwendung
+// 3. Custom Hook zur Verwendung
 export const useSignalR = () => useContext(SignalRContext);

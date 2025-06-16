@@ -9,7 +9,9 @@ namespace MqttBrokerWebApi.SignalRHub
 
         public override async Task OnConnectedAsync()
         {
-            await Clients.Caller.SendAsync("ClientListUpdated", _connectedClients.Values.ToList());
+
+            await Clients.Caller.SendAsync("ClientListUpdated", _connectedClients);
+
             await base.OnConnectedAsync();
         }
 
