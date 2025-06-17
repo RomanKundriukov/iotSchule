@@ -70,3 +70,28 @@ npm run dev
 
 - **Roman Kundriukov** – Idee, Umsetzung & Dokumentation  
 > 💻 GitHub: [@RomanKundriukov](https://github.com/RomanKundriukov)
+
+# 📱 Android APK – MAUI IoT App
+
+Hier kannst du die Android-App als `.apk`-Datei herunterladen und manuell auf deinem Gerät installieren.
+
+## 🔗 APK herunterladen
+
+👉 [Download MAUI IoT App (APK)](https://example.com/dein-apk-link.apk)
+
+> Hinweis: Beim ersten Installieren musst du evtl. die Installation aus unbekannten Quellen zulassen.
+
+## ⚙️ Voraussetzungen
+
+- Android-Gerät (mindestens Android 8.0 empfohlen)
+- Aktivierte Berechtigung zur Installation von APK-Dateien
+- Optional: Verbindung zum MQTT-Broker oder SignalR-Server, falls für deine Anwendung notwendig
+
+## 📝 Hinweise zur Nutzung
+
+- Die App benötigt ggf. Zugriffsrechte (z. B. Standort, Kamera oder Internet)
+- Die APK ist für Test- und Demonstrationszwecke gedacht
+
+---
+
+📬 Bei Fragen oder Feedback: [Roman Kundriukov](http://reactweb.runasp.net/)
