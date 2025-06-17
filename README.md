@@ -77,7 +77,7 @@ Hier kannst du die Android-App als `.apk`-Datei herunterladen und manuell auf de
 
 ## 🔗 APK herunterladen
 
-👉 [Download MAUI IoT App (APK)](https://github.com/RomanKundriukov/iotSchule/blob/main/Android%20APK/com.companyname.mauiclient.apk)
+👉 [Download MAUI IoT App (APK)](https://github.com/RomanKundriukov/iotSchule/raw/main/Android%20APK/com.companyname.mauiclient.apk)
 
 > Hinweis: Beim ersten Installieren musst du evtl. die Installation aus unbekannten Quellen zulassen.
 
