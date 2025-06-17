@@ -94,4 +94,5 @@ Hier kannst du die Android-App als `.apk`-Datei herunterladen und manuell auf de
 
 ---
 
-📬 Bei Fragen oder Feedback: [Roman Kundriukov](http://reactweb.runasp.net/)
+🌐 **WebInterface:**  
+👉 [Zur Weboberfläche](http://reactweb.runasp.net/)
